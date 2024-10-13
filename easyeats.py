@@ -7,6 +7,7 @@ import google.generativeai as genai
 load_dotenv('codespace.env')
 
 # Retrieve the API key
+
 api_keyy = os.getenv('GOOGLE_API_KEY')
 if api_keyy is None:
     st.error("API key not found. Please check your .env file.")
