@@ -36,7 +36,8 @@ def custom_css():
         unsafe_allow_html=True
     )
 
-custom_css()
+def main():
+    custom_css()
 
 # Load API key
 load_dotenv('codespace.env')
