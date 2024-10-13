@@ -18,8 +18,18 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 user_input = st.text_input("Enter the ingredients you would like to use: ")
 
-if user_input:
-    response = model.generate_content("Give me a recipie I can make with the following ingredients: " + user_input)
+healthy = st.checkbox("Limit calories?")
+
+if healthy:
+    calorie_limit = st.text_input("Enter calories limit: ")
+
+
+
+if st.button("Generate recipie"):
+    if healthy:
+        response = model.generate_content("Give me a recipie I can make with only the following ingredients and is under" + calorie_limit + " calories if possible: " + user_input)
+    else:
+        response = model.generate_content("Give me a recipie I can make with the following ingredients: " + user_input)
     # Display the response in the Streamlit app
     st.write(response.text)
 
