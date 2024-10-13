@@ -12,6 +12,13 @@ A simple Streamlit app template for you to modify!
    $ pip install -r requirements.txt
    ```
 
+2. Create a codespace.env file to include your gemini api key
+
+   contents of file should look like the following:
+
+   GOOGLE_API_KEY=your-api-key-here
+
+
 2. Run the app
 
    ```
