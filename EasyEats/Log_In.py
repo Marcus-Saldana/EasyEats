@@ -1,14 +1,40 @@
 import streamlit as st
-
-st.title('My Multi-Page Streamlit App')
-st.write('Select a page above to navigate through the app.')
-
-import streamlit as st
 import pandas as pd
 import os
 
 # Define the CSV file
 CSV_FILE = 'users.csv'
+
+def custom_css():
+    st.markdown(
+        """
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+            .stApp {
+                font-family: 'League Spartan', sans-serif;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'League Spartan', sans-serif;
+
+            }
+            div, span, p, label {
+                font-family: 'League Spartan', sans-serif;
+
+            }
+            .stTextInput input, .stTextArea textarea {
+                color: #DFE0E2 !important;
+            }
+           
+            hr {
+                border-top: solid #6F686D;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+custom_css()
 
 # Function to create the users CSV file if it doesn't exist
 def create_user_file():
@@ -46,7 +72,8 @@ def verify_user(username, password):
 def main():
     create_user_file()  # Ensure the CSV file exists
     
-    st.title("CSV Login System")
+    st.title("EasyEats Log-In Page")
+    st.markdown('---')
 
     # Login form
     st.subheader("Login")
@@ -58,16 +85,14 @@ def main():
             st.success("Logged in successfully!")
             st.session_state.page = "other_page"
             return
-
-
-
         else:
             st.error("Invalid username or password.")
 
     # Registration form
+    st.markdown('---')
     st.subheader("Create Account")
-    register_username = st.text_input("Username (for registration)")
-    register_password = st.text_input("Password (for registration)", type="password")
+    register_username = st.text_input("Registration Username")
+    register_password = st.text_input("Registration Password", type="password")
     
     if st.button("Sign Up"):
         register_user(register_username, register_password)
